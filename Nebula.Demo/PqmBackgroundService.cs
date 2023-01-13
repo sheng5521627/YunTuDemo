@@ -32,16 +32,8 @@ namespace Nebula.Demo
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var auditLogScope = new AuditLogScope(new AuditLogInfo()
-            {
-                UserName = "test"
-            });
-            using (_ambientScopeProvider.BeginScope("Volo.Abp.Auditing.IAuditLogScope", auditLogScope))
-            {
-                _priceDetailFilter.Filter();
-                _priceDetailFilter.MyFilter();
-            }
-            Console.WriteLine(auditLogScope.Log.ToString());
+            _priceDetailFilter.Filter();
+            _priceDetailFilter.MyFilter();
 
             ExecuteCore();
             await Task.CompletedTask;

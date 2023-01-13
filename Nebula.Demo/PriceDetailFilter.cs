@@ -15,7 +15,7 @@ namespace Nebula.Demo
         void MyFilter();
     }
 
-    [DisableAuditing]
+    [Audited]
     public class PriceDetailFilter : IPriceDetailFilter, ITransientDependency
     {
         public void Filter()
